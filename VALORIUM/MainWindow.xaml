@@ -1,0 +1,95 @@
+﻿<Window x:Class="VALORIUM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VALORIUM" xmlns:ribbon="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon" xmlns:ribbon1="urn:fluent-ribbon"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        WindowState="Maximized" 
+        AllowsTransparency="False"
+        Background="SkyBlue" Height="246" Width="409"
+        WindowStyle="None"
+        >
+    <Window.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" Height="26" VerticalAlignment="Top" Background="#B8D2FF" Margin="0,3" >
+            <!-- Left Section for Additional Buttons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Menu DockPanel.Dock="Top" Background="Transparent" Foreground="Black"  >
+                    <MenuItem Header="_File" >
+                        <MenuItem Header="_New"/>
+                        <MenuItem Header="_Open" />
+                        <MenuItem Header="_Save" />
+                        <Separator />
+                        <MenuItem Header="_Exit" />
+                    </MenuItem>
+                </Menu>
+                <Menu DockPanel.Dock="Top" Background="Transparent" Foreground="Black"  >
+                    <MenuItem Header="_Windows" >
+                        <MenuItem Header="_Message Box"/>
+                        <MenuItem Header="_Battalion Panel" />
+                    </MenuItem>
+                </Menu>
+                <Menu DockPanel.Dock="Top" Background="Transparent" Foreground="Black"  >
+                    <MenuItem Header="_Settings" >
+                        <MenuItem Name="menuItemHideSidebar" Header="_Hide sidebar" Click="TogglePanel_Click"/>
+                        <MenuItem Name="menuItemHideToolbar" Header="_Hide toolbar" Click="MenuItem_HideToolbar_Click"/>
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
+            <!-- Right Section for Control Buttons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="btnMinimizeWindow" Click="btnMinimizeWindow_Click" Width="50" Height="20" Background="Transparent" Foreground="Black" BorderThickness="0">
+                    <Image Source="/Images/minimize.png"/>
+                </Button>
+                <Button Name="btnCancelWindow" Click="btnCancelWindow_Click" Width="50" Height="20" Background="Transparent" Foreground="Black" BorderThickness="0">
+                    <Image Source="/Images/cancel.png"/>
+                </Button>
+               
+            </StackPanel>
+        </DockPanel>
+        <ribbon:Ribbon Name="rbnToolbar" Grid.Row="1" Background="Gray"  DockPanel.Dock="Top" Height="134">
+            <ribbon:RibbonTab Header="Home">
+                <ribbon:RibbonGroup Header="Clipboard">
+                    <Button>Copy</Button>
+                    <Button>Copy</Button>
+                    <Button>Paste</Button>
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+            <ribbon:RibbonTab Header="Home">
+                
+                <ribbon:RibbonGroup Header="Clipboard">
+                    <Button>Copy</Button>
+                    <Button>Copy</Button>
+                    <Button>Paste</Button>
+                    <Button>Copy</Button>
+                    <Button>Copy</Button>
+                    <Button>Paste</Button>
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+        </ribbon:Ribbon>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" Name="RightPanelColumn" />
+            </Grid.ColumnDefinitions>
+            <Canvas Name="canvasMain" Grid.Column="0" Background="LightSlateGray">
+            </Canvas>
+            <StackPanel Name="pnlRight" Grid.Column="1"  Background="LightBlue"  Margin="0">
+                <TextBlock>Hello sujan</TextBlock>
+            </StackPanel>
+
+        </Grid>
+    </DockPanel>
+
+
+
+
+
+</Window>

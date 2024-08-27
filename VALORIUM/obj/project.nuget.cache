@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "46fPxMoDf5ANW0gS6gGnVKJtl7U8155OjgljfhfQisis/jwGPK1EGl6M9+3LlgzNNag323L90MExoR2M/U4OcA==",
+  "success": true,
+  "projectFilePath": "E:\\winform\\VALORIUM\\VALORIUM\\VALORIUM.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AORUS\\.nuget\\packages\\controlzex\\6.0.0\\controlzex.6.0.0.nupkg.sha512",
+    "C:\\Users\\AORUS\\.nuget\\packages\\fluent.ribbon\\10.1.0\\fluent.ribbon.10.1.0.nupkg.sha512",
+    "C:\\Users\\AORUS\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
+    "C:\\Users\\AORUS\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
