@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         xmlns:local="clr-namespace:VALORIUM" xmlns:ribbon="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon" xmlns:ribbon1="urn:fluent-ribbon"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowState="Maximized" 
@@ -13,15 +16,16 @@
         >
     <Window.Resources>
         <Style TargetType="MenuItem">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
         </Style>
     </Window.Resources>
-    <DockPanel>
-        <DockPanel DockPanel.Dock="Top" Height="26" VerticalAlignment="Top" Background="#B8D2FF" Margin="0,3" >
+    <DockPanel Margin="0">
+        <DockPanel DockPanel.Dock="Top" Height="18" VerticalAlignment="Top" Background="#B8D2FF" Margin="0" >
             <!-- Left Section for Additional Buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
                 <Menu DockPanel.Dock="Top" Background="Transparent" Foreground="Black"  >
+                    <Image Margin="5,0" Height="18" Width="18" Source="Assets/Images/VALORIUM-LOGO.png"/>
                     <MenuItem Header="_File" >
                         <MenuItem Header="_New"/>
                         <MenuItem Header="_Open" />
@@ -46,50 +50,72 @@
             <!-- Right Section for Control Buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Name="btnMinimizeWindow" Click="btnMinimizeWindow_Click" Width="50" Height="20" Background="Transparent" Foreground="Black" BorderThickness="0">
-                    <Image Source="/Images/minimize.png"/>
+                    <Image Source="Assets/Images/minimize.png"/>
                 </Button>
                 <Button Name="btnCancelWindow" Click="btnCancelWindow_Click" Width="50" Height="20" Background="Transparent" Foreground="Black" BorderThickness="0">
-                    <Image Source="/Images/cancel.png"/>
+                    <Image Source="Assets/Images/cancel.png"/>
                 </Button>
-               
+
             </StackPanel>
         </DockPanel>
-        <ribbon:Ribbon Name="rbnToolbar" Grid.Row="1" Background="Gray"  DockPanel.Dock="Top" Height="134">
-            <ribbon:RibbonTab Header="Home">
-                <ribbon:RibbonGroup Header="Clipboard">
-                    <Button>Copy</Button>
-                    <Button>Copy</Button>
-                    <Button>Paste</Button>
-                </ribbon:RibbonGroup>
-            </ribbon:RibbonTab>
-            <ribbon:RibbonTab Header="Home">
-                
-                <ribbon:RibbonGroup Header="Clipboard">
-                    <Button>Copy</Button>
-                    <Button>Copy</Button>
-                    <Button>Paste</Button>
-                    <Button>Copy</Button>
-                    <Button>Copy</Button>
-                    <Button>Paste</Button>
-                </ribbon:RibbonGroup>
-            </ribbon:RibbonTab>
-        </ribbon:Ribbon>
-        <Grid>
+        <WrapPanel Name="toolBar" Grid.Row="1" Background="LightCyan"  DockPanel.Dock="Top" Height="Auto" Margin="0">
+            <Image Margin="10,2" Height="30" Width="30" Source="Assets/Images/VALORIUM-LOGO.png"/>
+        </WrapPanel>
+        
+        <Grid Margin="0">
+            <!-- Define Row and Column Definitions -->
+            <Grid.RowDefinitions>
+                <!-- Top Panel (Split into Main Canvas and Right Panel) -->
+                <RowDefinition Height="*" />
+                <!-- GridSplitter between Top and Bottom Panels -->
+                <RowDefinition Height="5" />
+                <!-- Bottom Panel -->
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <!-- Left Panel (Main Canvas) -->
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" Name="RightPanelColumn" />
+                <!-- GridSplitter between Left and Right Panels -->
+                <ColumnDefinition Width="5" />
+                <!-- Right Panel (Sidebar) -->
+                <ColumnDefinition Width="0.25*" x:Name="RightPanelColumn" />
             </Grid.ColumnDefinitions>
-            <Canvas Name="canvasMain" Grid.Column="0" Background="LightSlateGray">
-            </Canvas>
-            <StackPanel Name="pnlRight" Grid.Column="1"  Background="LightBlue"  Margin="0">
-                <TextBlock>Hello sujan</TextBlock>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <TabControl>
+                    <TabItem Header="1">
+                        <wfi:WindowsFormsHost Name="winFormsHost" Visibility="Visible">
+                            <wf:Button Text="WinForms Button" Dock="Fill" />
+                        </wfi:WindowsFormsHost>
+                    </TabItem>
+                    <TabItem Header="2">
+                        <wv2:WebView2 Name="webView" Source="https://www.example.com" />
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <!-- Main Canvas -->
+           
+            <!-- GridSplitter between Main Canvas and Sidebar -->
+            <GridSplitter Grid.Row="0" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" 
+                      Background="Gray" ResizeBehavior="PreviousAndNext" />
+
+            
+            
+            <!-- Right Panel (Sidebar) -->
+            <StackPanel Name="pnlRight" Grid.Row="0" Grid.Column="2" Background="LightBlue" Margin="0">
+                <TextBlock Text="Hello Sujan" />
+                <!-- Add more content here -->
             </StackPanel>
 
+            <!-- GridSplitter between Top and Bottom Panels -->
+            <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="2" HorizontalAlignment="Stretch" 
+                      Background="Gray" ResizeBehavior="PreviousAndNext" />
+
+            
+            
+            <!-- Bottom Panel -->  
+            <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="AliceBlue">
+
+            </Grid>
         </Grid>
     </DockPanel>
-
-
-
-
-
 </Window>

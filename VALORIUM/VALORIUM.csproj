@@ -9,17 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\cancel.png" />
-    <None Remove="Images\minimize.png" />
+    <None Remove="Assets\Images\cancel.png" />
+    <None Remove="Assets\Images\minimize.png" />
+    <None Remove="Assets\Images\VALORIUM-LOGO.png" />
+    <None Remove="Assets\Web\index.html" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Fluent.Ribbon" Version="10.1.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2739.15" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\cancel.png" />
-    <Resource Include="Images\minimize.png" />
+    <Resource Include="Assets\Images\cancel.png" />
+    <Resource Include="Assets\Images\minimize.png" />
+    <Resource Include="Assets\Images\VALORIUM-LOGO.png" />
+    <Content Include="Assets\Web\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Web\js\" />
+    <Folder Include="Assets\Web\css\" />
+    <Folder Include="Models\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
