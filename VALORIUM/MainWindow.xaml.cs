@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VALORIUM.Commands;
 
 namespace VALORIUM
 {
@@ -16,17 +17,29 @@ namespace VALORIUM
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool isSidePanelVisible = true;
-        private bool isToolbarVisible = true;
+        private bool IsSidePanelVisible = true;
+        private bool IsToolbarVisible = true;
+
         public MainWindow()
         {
             InitializeComponent();
-            SetSidePanelVisibility(isSidePanelVisible);
-            SetToolbarVisibility(isToolbarVisible);
+            _ = new SwitchViewCommand(this); //ALT + W
+            SetSidePanelVisibility(IsSidePanelVisible);
+           
+            SetToolbarVisibility(IsToolbarVisible);
             LoadWebView();
-        }
-      
-        
+           
 
+        }
+        private void ViewContent_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //webView.Width = ViewContent.ActualWidth;
+            //webView.Height = ViewContent.ActualHeight;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewContent.SizeChanged += ViewContent_SizeChanged;
+        }
     }
 }

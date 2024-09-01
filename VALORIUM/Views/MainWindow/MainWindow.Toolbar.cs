@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace VALORIUM
 {
@@ -20,8 +21,8 @@ namespace VALORIUM
         }
         private void TogglePanel_Click(object sender, RoutedEventArgs e)
         {
-            isSidePanelVisible = !isSidePanelVisible;
-            SetSidePanelVisibility(isSidePanelVisible);
+            IsSidePanelVisible = !IsSidePanelVisible;
+            SetSidePanelVisibility(IsSidePanelVisible);
         }
         private void SetSidePanelVisibility(bool isVisible)
         {
@@ -36,13 +37,13 @@ namespace VALORIUM
             {
                 pnlRight.Visibility = Visibility.Collapsed;
                 menuItemHideSidebar.Header = "_Show sidebar";
-                RightPanelColumn.Width = new GridLength(0); // Collapse the column
+                 RightPanelColumn.Width = new GridLength(0); // Collapse the column
             }
         }
         private void MenuItem_HideToolbar_Click(object sender, RoutedEventArgs e)
         {
-            isToolbarVisible = !isToolbarVisible;
-            SetToolbarVisibility(isToolbarVisible);
+            IsToolbarVisible = !IsToolbarVisible;
+            SetToolbarVisibility(IsToolbarVisible);
         }
         private void btnCancelWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -52,5 +53,26 @@ namespace VALORIUM
         {
             this.WindowState = WindowState.Minimized;
         }
+        private void ViewSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Get the selected ComboBoxItem
+            var selectedItem = (ComboBoxItem)ViewSelector.SelectedItem;
+            var selectedTag = selectedItem?.Tag.ToString();
+
+            // Hide both controls initially
+            winFormsHost.Visibility = Visibility.Collapsed;
+            //webView.Visibility = Visibility.Collapsed;
+
+            // Show the selected control
+            if (selectedTag == "3D")
+            {
+               // webView.Visibility = Visibility.Visible;
+            }
+            else if (selectedTag == "2D")
+            {
+                winFormsHost.Visibility = Visibility.Visible;
+            }
+        }
+
     }
 }

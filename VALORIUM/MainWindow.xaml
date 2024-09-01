@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
-        xmlns:local="clr-namespace:VALORIUM" xmlns:ribbon="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon" xmlns:ribbon1="urn:fluent-ribbon"
-        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+       
+
         mc:Ignorable="d"
         Title="MainWindow"
-        WindowState="Maximized" 
         AllowsTransparency="False"
         Background="SkyBlue" Height="246" Width="409"
-        WindowStyle="None"
+       
         >
     <Window.Resources>
         <Style TargetType="MenuItem">
@@ -60,46 +59,66 @@
         </DockPanel>
         <WrapPanel Name="toolBar" Grid.Row="1" Background="LightCyan"  DockPanel.Dock="Top" Height="Auto" Margin="0">
             <Image Margin="10,2" Height="30" Width="30" Source="Assets/Images/VALORIUM-LOGO.png"/>
+            <ComboBox Name="ViewSelector" Width="100" Margin="10" VerticalAlignment="Top"
+                        SelectionChanged="ViewSelector_SelectionChanged">
+                <ComboBoxItem Content="3D View" Tag="3D" />
+                <ComboBoxItem Content="2D View" Tag="2D" />
+            </ComboBox>
         </WrapPanel>
-        
+
+
         <Grid Margin="0">
             <!-- Define Row and Column Definitions -->
             <Grid.RowDefinitions>
-                <!-- Top Panel (Split into Main Canvas and Right Panel) -->
                 <RowDefinition Height="*" />
-                <!-- GridSplitter between Top and Bottom Panels -->
-                <RowDefinition Height="5" />
-                <!-- Bottom Panel -->
-                <RowDefinition Height="40" />
+                
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <!-- Left Panel (Main Canvas) -->
-                <ColumnDefinition Width="*" />
-                <!-- GridSplitter between Left and Right Panels -->
+                <ColumnDefinition Width="0.75*" />
+
                 <ColumnDefinition Width="5" />
-                <!-- Right Panel (Sidebar) -->
+
                 <ColumnDefinition Width="0.25*" x:Name="RightPanelColumn" />
             </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0">
-                <TabControl>
-                    <TabItem Header="1">
-                        <wfi:WindowsFormsHost Name="winFormsHost" Visibility="Visible">
-                            <wf:Button Text="WinForms Button" Dock="Fill" />
-                        </wfi:WindowsFormsHost>
-                    </TabItem>
-                    <TabItem Header="2">
-                        <wv2:WebView2 Name="webView" Source="https://www.example.com" />
-                    </TabItem>
-                </TabControl>
+            <Grid  Grid.Row="1" Grid.Column="0">
+                <!-- ComboBox for 3D/2D selection -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <!-- GridSplitter between Top and Bottom Panels -->
+                    <RowDefinition Height="5"/>
+                    <!-- Bottom Panel -->
+                    <RowDefinition  Height="143" />
+                </Grid.RowDefinitions>
+
+                <!-- Grid to contain the view content -->
+                <Grid Name="ViewContent" Grid.Row="0">
+                    <wfi:WindowsFormsHost Name="winFormsHost"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Visibility="Collapsed">
+                        <wf:Button Text="WinForms Button" Dock="Fill" />
+                    </wfi:WindowsFormsHost>
+
+                    <!-- WebView2 for 2D View -->
+                   
+                 
+                </Grid> 
+
+                <GridSplitter Grid.Row="1"  Height="5" HorizontalAlignment="Stretch" 
+                 Background="Gray" ResizeBehavior="PreviousAndNext" />
+
+                <Grid Grid.Row="2"  Background="AliceBlue">
+
+                </Grid>
             </Grid>
             <!-- Main Canvas -->
-           
+
             <!-- GridSplitter between Main Canvas and Sidebar -->
             <GridSplitter Grid.Row="0" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" 
-                      Background="Gray" ResizeBehavior="PreviousAndNext" />
+               Background="Gray" ResizeBehavior="PreviousAndNext" />
 
-            
-            
+
+
             <!-- Right Panel (Sidebar) -->
             <StackPanel Name="pnlRight" Grid.Row="0" Grid.Column="2" Background="LightBlue" Margin="0">
                 <TextBlock Text="Hello Sujan" />
@@ -107,15 +126,14 @@
             </StackPanel>
 
             <!-- GridSplitter between Top and Bottom Panels -->
-            <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="2" HorizontalAlignment="Stretch" 
-                      Background="Gray" ResizeBehavior="PreviousAndNext" />
 
-            
-            
-            <!-- Bottom Panel -->  
-            <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="AliceBlue">
-
-            </Grid>
         </Grid>
+
+
+
+
+
+
+
     </DockPanel>
 </Window>

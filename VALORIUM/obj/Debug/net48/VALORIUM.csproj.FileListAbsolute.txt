@@ -1,0 +1,6 @@
+E:\winform\VALORIUM\VALORIUM\obj\Debug\net48\VALORIUM.csproj.AssemblyReference.cache
+E:\winform\VALORIUM\VALORIUM\obj\Debug\net48\MainWindow.g.cs
+E:\winform\VALORIUM\VALORIUM\obj\Debug\net48\App.g.cs
+E:\winform\VALORIUM\VALORIUM\obj\Debug\net48\VALORIUM_Content.g.cs
+E:\winform\VALORIUM\VALORIUM\obj\Debug\net48\VALORIUM_MarkupCompile.cache
+E:\winform\VALORIUM\VALORIUM\obj\Debug\net48\VALORIUM_MarkupCompile.lref

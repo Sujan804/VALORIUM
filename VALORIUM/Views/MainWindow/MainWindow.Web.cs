@@ -17,7 +17,7 @@ namespace VALORIUM
         void LoadWebView()
         {
             string htmlFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Web", "index.html");
-            webView.Source = new Uri(htmlFilePath);
+            //webView.Address = htmlFilePath;
         }
     }
 }
